@@ -1,6 +1,7 @@
 package com.esp32servo.remote_servo_manager.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +35,10 @@ public class SensorController {
 		SensorRead readSave = sensorRepository.save(sensorRead);
 		return ResponseEntity.ok(readSave);
 	}
+	
+	@GetMapping("/health-check")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("API del servo está funcionando!");
+    }
 
 }
